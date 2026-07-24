@@ -1,24 +1,23 @@
 # Daily Love Family Daycare Website
 
-Production-ready static website template for Daily Love Family Daycare in Montgomery County, Maryland, built with Astro and TypeScript.
+Production-ready static website for Daily Love Family Daycare in Montgomery County, Maryland, built with Astro and TypeScript.
 
-## Project Overview
-
-This project provides a warm, family-oriented, professional childcare website with:
+## What is included
 
 - Home, About, Programs, Daily Schedule, Health and Safety, Enrollment, Contact, and Privacy Policy pages
 - Reusable Astro component architecture
-- Editable centralized daycare content in data files
-- Accessible semantic HTML and responsive modern CSS
-- Minimal JavaScript for mobile navigation and contact form behavior
+- Centralized editable content and business data files
+- Modern responsive UI with child-friendly color accents and clean parent-focused readability
+- Sticky header, polished desktop and mobile navigation, and lightweight reveal animations
+- Daycare gallery system with reusable image data and components
 - Static hosting compatibility (Cloudflare Pages, Netlify, GitHub Pages, GoDaddy static hosting)
 
-## Technology Stack
+## Technology stack
 
 - Astro
 - TypeScript
 - Semantic HTML5
-- Modern responsive CSS
+- Modern CSS
 - Minimal vanilla JavaScript
 
 ## Prerequisites
@@ -28,112 +27,94 @@ This project provides a warm, family-oriented, professional childcare website wi
 
 ## Installation
 
-```bash
+Run:
+
 npm install
-```
 
-## Local Development
+## Local development
 
-```bash
+Run:
+
 npm run dev
-```
 
-## Production Build
+Default local URL:
 
-```bash
+http://localhost:4321
+
+## Build and preview
+
+Run:
+
 npm run build
 npm run preview
-```
 
-## Validation
+## Type and project checks
 
-```bash
+Run:
+
 npm run check
-```
 
-## Edit Daycare Information
+## Project structure and key files
 
-Update all business details in [src/data/siteConfig.ts](src/data/siteConfig.ts).
+- Global business details and contact defaults: [src/data/siteConfig.ts](src/data/siteConfig.ts)
+- Core content copy: [src/data/content.ts](src/data/content.ts)
+- Navigation items: [src/data/navigation.ts](src/data/navigation.ts)
+- Gallery image data: [src/data/gallery.ts](src/data/gallery.ts)
+- Global styles and color system: [src/styles/global.css](src/styles/global.css)
+- Global layout and reveal animation script: [src/layouts/BaseLayout.astro](src/layouts/BaseLayout.astro)
 
-Key values include:
+## Current image system
 
-- Business name
-- Phone and email
-- Address and county
-- Business and tour hours
-- Licensing wording placeholders
-- Program availability
-- Social links
-- Canonical URL
+The site now uses daycare-themed visuals in [public/images/daycare](public/images/daycare), including:
 
-## Replace Images
+- [public/images/daycare/daycare-hero-scene.svg](public/images/daycare/daycare-hero-scene.svg)
+- [public/images/daycare/daycare-reading-corner.svg](public/images/daycare/daycare-reading-corner.svg)
+- [public/images/daycare/daycare-creative-play.svg](public/images/daycare/daycare-creative-play.svg)
+- [public/images/daycare/daycare-outdoor-play.svg](public/images/daycare/daycare-outdoor-play.svg)
+- [public/images/daycare/daycare-snack-time.svg](public/images/daycare/daycare-snack-time.svg)
+- [public/images/daycare/daycare-rest-area.svg](public/images/daycare/daycare-rest-area.svg)
 
-- Hero placeholder: [public/images/hero-placeholder.svg](public/images/hero-placeholder.svg)
-- OG image placeholder: update [src/data/siteConfig.ts](src/data/siteConfig.ts) and replace referenced file in [public/images](public/images)
-- Favicon placeholder: [public/favicon/favicon.svg](public/favicon/favicon.svg)
+Reusable gallery component and data:
 
-Use optimized AVIF, WebP, or compressed JPEG/PNG for production assets.
+- [src/components/DaycareGallery.astro](src/components/DaycareGallery.astro)
+- [src/data/gallery.ts](src/data/gallery.ts)
 
-## Configure Contact Form
+Recommended production upgrade:
 
-1. Copy .env.example to .env.
+- Replace SVG visuals with real permission-cleared daycare photos using the same file names to avoid code changes.
+- Use optimized AVIF or WebP when possible.
+
+## Enrollment and announcement content
+
+Enrollment messaging is centralized in:
+
+- [src/data/content.ts](src/data/content.ts)
+- [src/data/siteConfig.ts](src/data/siteConfig.ts)
+
+Optional reusable social caption block is available in:
+
+- [src/components/ShareAnnouncement.astro](src/components/ShareAnnouncement.astro)
+
+Note: this component is created and ready to use, but not yet placed on a page by default.
+
+## Configure contact form
+
+1. Copy [.env.example](.env.example) to .env.
 2. Set PUBLIC_FORM_ENDPOINT to your form provider endpoint.
-3. Keep private keys server-side only; do not expose secrets in client code.
+3. Keep private keys server-side only. Do not expose secrets in public variables.
 
-## Update SEO Metadata
+## SEO and metadata
 
 - Page-level SEO config: [src/data/seo.ts](src/data/seo.ts)
 - Global canonical URL and defaults: [src/data/siteConfig.ts](src/data/siteConfig.ts)
-- Structured data layout: [src/layouts/BaseLayout.astro](src/layouts/BaseLayout.astro)
+- Structured data: [src/layouts/BaseLayout.astro](src/layouts/BaseLayout.astro)
 - robots route: [src/pages/robots.txt.ts](src/pages/robots.txt.ts)
 - sitemap output: generated by @astrojs/sitemap during build
-- manifest: [public/site.webmanifest](public/site.webmanifest)
+- Web manifest: [public/site.webmanifest](public/site.webmanifest)
 
-## Add Your Domain
-
-1. Set canonicalUrl in [src/data/siteConfig.ts](src/data/siteConfig.ts).
-2. Update site in [astro.config.mjs](astro.config.mjs).
-3. Set PUBLIC_SITE_URL in your environment variables.
-4. Rebuild and redeploy.
-
-## Deployment
-
-### Cloudflare Pages
-
-1. Push repository to GitHub.
-2. Create a Cloudflare Pages project from the repo.
-3. Build command: npm run build
-4. Output directory: dist
-5. Add environment variables from .env (if using forms).
-6. Deploy.
-
-### Netlify
-
-1. Connect repository in Netlify.
-2. Build command: npm run build
-3. Publish directory: dist
-4. Add environment variables in Site settings.
-5. Deploy.
-
-### GitHub Pages
-
-1. Run npm run build.
-2. Publish the dist folder via GitHub Actions or branch-based static publishing.
-3. If using a project subpath, configure Astro base path accordingly.
-4. Ensure custom domain and HTTPS are enabled in repository Pages settings.
-
-### GoDaddy Static Hosting
-
-1. Run npm run build locally.
-2. Upload all files from dist via GoDaddy file manager or FTP.
-3. Configure domain DNS to point to the hosting destination.
-4. Enable SSL/HTTPS in hosting controls.
-
-## Environment Variables
+## Environment variables
 
 Reference file: [.env.example](.env.example)
-
-Used variables:
 
 - PUBLIC_SITE_URL
 - PUBLIC_BUSINESS_NAME
@@ -149,36 +130,65 @@ Used variables:
 - PUBLIC_GA_ID
 - PUBLIC_BASE_PATH
 
-## Prelaunch Checklist
+## Domain setup
+
+1. Set canonicalUrl in [src/data/siteConfig.ts](src/data/siteConfig.ts).
+2. Update site in [astro.config.mjs](astro.config.mjs).
+3. Set PUBLIC_SITE_URL in environment variables.
+4. Rebuild and redeploy.
+
+## Deployment
+
+### Cloudflare Pages
+
+Use the detailed guide in [README-CLOUDFLARE.md](README-CLOUDFLARE.md).
+
+Quick settings:
+
+- Build command: npm run build
+- Output directory: dist
+- Production branch: main
+
+### Netlify
+
+1. Connect repository in Netlify.
+2. Build command: npm run build
+3. Publish directory: dist
+4. Add environment variables.
+5. Deploy.
+
+### GitHub Pages
+
+1. Run npm run build.
+2. Publish the dist folder via GitHub Actions or branch-based static publishing.
+3. If using a project subpath, configure Astro base path accordingly.
+
+### GoDaddy static hosting
+
+1. Run npm run build.
+2. Upload all files from dist via file manager or FTP.
+3. Configure domain DNS.
+4. Enable SSL/HTTPS.
+
+## Prelaunch checklist
 
 - [ ] Confirm official business name
-- [ ] Confirm address
-- [ ] Confirm phone number
-- [ ] Confirm email address
-- [ ] Confirm business hours
-- [ ] Confirm age groups served
-- [ ] Confirm program availability
-- [ ] Confirm licensing authority
-- [ ] Confirm license number
-- [ ] Confirm caregiver credentials
-- [ ] Confirm CPR and First Aid wording
-- [ ] Confirm meal information
-- [ ] Confirm tuition information
-- [ ] Confirm enrollment requirements
-- [ ] Replace all placeholder images
-- [ ] Obtain permission for testimonials and photos
-- [ ] Test the inquiry form
-- [ ] Test all links
-- [ ] Test mobile layout
-- [ ] Test accessibility
-- [ ] Review privacy policy
-- [ ] Review all legal and licensing statements
-- [ ] Connect the custom domain
-- [ ] Enable HTTPS
-- [ ] Test the production website
+- [ ] Confirm phone and email
+- [ ] Confirm address and maps link
+- [ ] Confirm business and tour hours
+- [ ] Confirm age groups served and current availability
+- [ ] Confirm licensing authority and license number
+- [ ] Confirm policy text and legal wording
+- [ ] Replace visuals with permission-cleared photos if needed
+- [ ] Test contact and enrollment flows
+- [ ] Test all links and page navigation
+- [ ] Test mobile, tablet, and desktop layouts
+- [ ] Verify accessibility and keyboard navigation
+- [ ] Verify robots, sitemap, and metadata
+- [ ] Connect custom domain and enable HTTPS
 
 ## Notes
 
-- This template avoids unsupported legal, medical, or licensing claims.
-- Confirm official licensing language and related details before publication.
+- Confirm official licensing language before publishing.
 - Do not publish tuition amounts until finalized.
+- Obtain explicit permission before using any child or family photos/testimonials.
