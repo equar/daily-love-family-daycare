@@ -6,11 +6,16 @@ interface Props {
 }
 
 const { currentPath } = Astro.props;
+const coreNav = navigation.filter((item) =>
+  ["/", "/about", "/programs", "/enrollment", "/contact"].includes(item.href)
+);
+const secondaryNav = navigation.filter((item) => ["/daily-schedule", "/health-safety"].includes(item.href));
+const isSecondaryActive = secondaryNav.some((item) => item.href === currentPath);
 ---
 
 <nav aria-label="Primary" class="desktop-nav">
   <ul>
-    {navigation.map((item) => {
+    {coreNav.map((item) => {
       const isActive = currentPath === item.href;
       return (
         <li>
@@ -20,6 +25,24 @@ const { currentPath } = Astro.props;
         </li>
       );
     })}
+
+    <li>
+      <details class="more-menu" role="list">
+        <summary aria-current={isSecondaryActive ? "page" : undefined}>More</summary>
+        <ul class="more-panel">
+          {secondaryNav.map((item) => {
+            const isActive = currentPath === item.href;
+            return (
+              <li>
+                <a href={item.href} aria-current={isActive ? "page" : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </details>
+    </li>
   </ul>
 </nav>
 
@@ -33,20 +56,16 @@ const { currentPath } = Astro.props;
     padding: 0;
     list-style: none;
     display: flex;
-    gap: var(--space-2);
+    gap: var(--space-1);
     align-items: center;
-    background: rgba(246, 250, 255, 0.78);
-    border: 1px solid #dbe8f3;
-    border-radius: var(--radius-pill);
-    padding: 0.28rem;
   }
 
   a {
     text-decoration: none;
     color: var(--color-ink-900);
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 0.52rem 0.78rem;
+    font-size: 0.93rem;
+    padding: 0.46rem 0.7rem;
     border-radius: var(--radius-pill);
     border: 1px solid transparent;
     transition: background-color var(--transition), border-color var(--transition), color var(--transition);
@@ -79,6 +98,68 @@ const { currentPath } = Astro.props;
   a[aria-current="page"]::before {
     background: #7db5de;
     border-color: #6eaad6;
+  }
+
+  .more-menu {
+    position: relative;
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--color-ink-900);
+    font-weight: 700;
+    font-size: 0.93rem;
+    padding: 0.46rem 0.7rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: "▾";
+    font-size: 0.78rem;
+    color: var(--color-ink-600);
+  }
+
+  summary[aria-current="page"],
+  details[open] summary {
+    border-color: #bed9ef;
+    background: linear-gradient(180deg, #f2f9ff, #e5f2ff);
+    color: var(--color-sky-700);
+  }
+
+  .more-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.35rem);
+    min-width: 12rem;
+    background: #ffffff;
+    border: 1px solid #dbe8f3;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 0.35rem;
+    display: grid;
+    gap: 0.1rem;
+    z-index: 45;
+  }
+
+  .more-panel li {
+    display: block;
+  }
+
+  .more-panel a {
+    width: 100%;
+  }
+
+  .more-panel a::before {
+    display: none;
   }
 
   @media (min-width: 64rem) {
