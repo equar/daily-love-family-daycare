@@ -25,6 +25,7 @@ const seo = pageSeo.contact;
       <div class="grid grid-2">
         <article class="card">
           <h2>Daycare Contact Details</h2>
+          <p><strong>Contact person:</strong> {siteConfig.contactName}</p>
           <p><strong>Address:</strong> {siteConfig.streetAddress}, {siteConfig.city}, {siteConfig.state} {siteConfig.zip}</p>
           <p><strong>County:</strong> {siteConfig.county}, {siteConfig.state}</p>
           <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></p>

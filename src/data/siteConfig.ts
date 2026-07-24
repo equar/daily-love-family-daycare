@@ -1,5 +1,6 @@
 export type SiteConfig = {
   businessName: string;
+  contactName: string;
   tagline: string;
   county: string;
   city: string;
@@ -43,16 +44,17 @@ const requiredText = (value: string | undefined, fallback: string): string =>
 
 export const siteConfig: SiteConfig = {
   businessName: requiredText(env.PUBLIC_BUSINESS_NAME, "Daily Love Family Daycare"),
+  contactName: requiredText(env.PUBLIC_CONTACT_NAME, "Asrat Alemu"),
   tagline: "A loving place to learn, grow, and feel at home.",
   county: "Montgomery County",
-  city: "[CITY]",
+  city: "Silver Spring",
   state: "Maryland",
-  zip: "[ZIP CODE]",
-  streetAddress: requiredText(env.PUBLIC_ADDRESS, "[STREET ADDRESS]"),
+  zip: "20904",
+  streetAddress: requiredText(env.PUBLIC_ADDRESS, "12922 Autumn DR"),
   phone: requiredText(env.PUBLIC_PHONE, "[PHONE NUMBER]"),
   email: requiredText(env.PUBLIC_EMAIL, "[EMAIL ADDRESS]"),
-  businessHours: "[BUSINESS HOURS]",
-  tourHours: "[TOUR HOURS]",
+  businessHours: "7 A.M. - 5:30 P.M.",
+  tourHours: "Tours available by appointment from 7 A.M. - 5:30 P.M.",
   canonicalUrl: requiredText(env.PUBLIC_SITE_URL, "https://example.com"),
   mapsUrl: requiredText(env.PUBLIC_GOOGLE_MAPS, ""),
   socialLinks: {
