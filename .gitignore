@@ -16,3 +16,4 @@ pnpm-debug.log*
 # OS/editor artifacts
 .DS_Store
 Thumbs.db
+.vscode/settings.json

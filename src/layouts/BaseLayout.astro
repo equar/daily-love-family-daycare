@@ -26,7 +26,10 @@ const {
   currentPath
 } = Astro.props;
 
-const canonical = new URL(canonicalPath, siteConfig.canonicalUrl).toString();
+const canonicalSite = siteConfig.canonicalUrl.endsWith("/")
+  ? siteConfig.canonicalUrl
+  : `${siteConfig.canonicalUrl}/`;
+const canonical = new URL(canonicalPath, canonicalSite).toString();
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -49,7 +52,7 @@ const localBusinessSchema = {
     name: `${siteConfig.county}, ${siteConfig.state}`
   },
   openingHours: siteConfig.businessHours,
-  image: new URL(ogImage, siteConfig.canonicalUrl).toString()
+  image: new URL(ogImage, canonicalSite).toString()
 };
 ---
 
@@ -68,17 +71,28 @@ const localBusinessSchema = {
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(ogImage, siteConfig.canonicalUrl).toString()} />
+    <meta property="og:image" content={new URL(ogImage, canonicalSite).toString()} />
 
     <meta name="twitter:card" content={siteConfig.seo.twitterCard} />
     <meta name="twitter:title" content={ogTitle} />
     <meta name="twitter:description" content={ogDescription} />
-    <meta name="twitter:image" content={new URL(ogImage, siteConfig.canonicalUrl).toString()} />
+    <meta name="twitter:image" content={new URL(ogImage, canonicalSite).toString()} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+    {
+      siteConfig.analyticsId && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analyticsId}`}></script>
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${siteConfig.analyticsId}');`}
+          ></script>
+        </>
+      )
+    }
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
