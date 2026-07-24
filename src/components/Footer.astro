@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../data/siteConfig";
+import { hasUsableUrl } from "../data/siteConfig";
 
 const year = new Date().getFullYear();
 ---
@@ -33,10 +34,34 @@ const year = new Date().getFullYear();
     <section>
       <h2>Social and Accessibility</h2>
       <ul>
-        <li><a href={siteConfig.socialLinks.facebook}>Facebook placeholder</a></li>
-        <li><a href={siteConfig.socialLinks.instagram}>Instagram placeholder</a></li>
-        <li><a href={siteConfig.socialLinks.x}>X placeholder</a></li>
-        <li><a href="[ACCESSIBILITY STATEMENT LINK]">Accessibility Statement placeholder</a></li>
+        <li>
+          {hasUsableUrl(siteConfig.socialLinks.facebook) ? (
+            <a href={siteConfig.socialLinks.facebook}>Facebook</a>
+          ) : (
+            <span>Facebook placeholder</span>
+          )}
+        </li>
+        <li>
+          {hasUsableUrl(siteConfig.socialLinks.instagram) ? (
+            <a href={siteConfig.socialLinks.instagram}>Instagram</a>
+          ) : (
+            <span>Instagram placeholder</span>
+          )}
+        </li>
+        <li>
+          {hasUsableUrl(siteConfig.socialLinks.x) ? (
+            <a href={siteConfig.socialLinks.x}>X</a>
+          ) : (
+            <span>X placeholder</span>
+          )}
+        </li>
+        <li>
+          {hasUsableUrl(siteConfig.accessibilityStatementUrl) ? (
+            <a href={siteConfig.accessibilityStatementUrl}>Accessibility Statement</a>
+          ) : (
+            <span>Accessibility Statement placeholder</span>
+          )}
+        </li>
       </ul>
     </section>
   </div>

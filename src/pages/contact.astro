@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactForm from "../components/ContactForm.astro";
 import { pageSeo } from "../data/seo";
-import { siteConfig } from "../data/siteConfig";
+import { hasUsableUrl, siteConfig } from "../data/siteConfig";
 
 const seo = pageSeo.contact;
 ---
@@ -31,7 +31,14 @@ const seo = pageSeo.contact;
           <p><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
           <p><strong>Business hours:</strong> {siteConfig.businessHours}</p>
           <p><strong>Tour availability:</strong> {siteConfig.tourHours}</p>
-          <p><strong>Google Maps:</strong> <a href={siteConfig.mapsUrl}>View map placeholder</a></p>
+          <p>
+            <strong>Google Maps:</strong>
+            {hasUsableUrl(siteConfig.mapsUrl) ? (
+              <a href={siteConfig.mapsUrl}> View map</a>
+            ) : (
+              <span> [GOOGLE MAPS LINK]</span>
+            )}
+          </p>
           <p><strong>Emergency contact policy:</strong> {siteConfig.emergencyContactPolicy}</p>
         </article>
 

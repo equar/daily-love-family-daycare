@@ -17,6 +17,7 @@ export type SiteConfig = {
     instagram: string;
     x: string;
   };
+  accessibilityStatementUrl: string;
   enrollmentStatus: string;
   infantAvailability: string;
   toddlerAvailability: string;
@@ -27,6 +28,7 @@ export type SiteConfig = {
   licensingPlaceholderNotice: string;
   formProvider: "formspree" | "web3forms" | "none";
   formEndpoint: string;
+  analyticsId: string;
   emergencyContactPolicy: string;
   seo: {
     defaultOgImage: string;
@@ -34,37 +36,44 @@ export type SiteConfig = {
   };
 };
 
+const env = import.meta.env;
+
+const requiredText = (value: string | undefined, fallback: string): string =>
+  value && value.trim().length > 0 ? value.trim() : fallback;
+
 export const siteConfig: SiteConfig = {
-  businessName: "Daily Love Family Daycare",
+  businessName: requiredText(env.PUBLIC_BUSINESS_NAME, "Daily Love Family Daycare"),
   tagline: "A loving place to learn, grow, and feel at home.",
   county: "Montgomery County",
   city: "[CITY]",
   state: "Maryland",
   zip: "[ZIP CODE]",
-  streetAddress: "[STREET ADDRESS]",
-  phone: "[PHONE NUMBER]",
-  email: "[EMAIL ADDRESS]",
+  streetAddress: requiredText(env.PUBLIC_ADDRESS, "[STREET ADDRESS]"),
+  phone: requiredText(env.PUBLIC_PHONE, "[PHONE NUMBER]"),
+  email: requiredText(env.PUBLIC_EMAIL, "[EMAIL ADDRESS]"),
   businessHours: "[BUSINESS HOURS]",
   tourHours: "[TOUR HOURS]",
-  canonicalUrl: "https://example.com",
-  mapsUrl: "[GOOGLE MAPS LINK]",
+  canonicalUrl: requiredText(env.PUBLIC_SITE_URL, "https://example.com"),
+  mapsUrl: requiredText(env.PUBLIC_GOOGLE_MAPS, ""),
   socialLinks: {
-    facebook: "[FACEBOOK URL]",
-    instagram: "[INSTAGRAM URL]",
+    facebook: requiredText(env.PUBLIC_FACEBOOK, ""),
+    instagram: requiredText(env.PUBLIC_INSTAGRAM, ""),
     x: "[X URL]"
   },
+  accessibilityStatementUrl: "",
   enrollmentStatus: "Now accepting enrollment inquiries. Availability may vary by age group.",
   infantAvailability: "Available by inquiry only, based on licensing capacity and current enrollment.",
   toddlerAvailability: "Please contact us for current openings.",
   preschoolAvailability: "Please contact us for current openings.",
-  licenseNumber: "[LICENSE NUMBER]",
-  licensingAuthority: "[LICENSING AUTHORITY]",
+  licenseNumber: requiredText(env.PUBLIC_LICENSE_NUMBER, "[LICENSE NUMBER]"),
+  licensingAuthority: requiredText(env.PUBLIC_LICENSE_AUTHORITY, "[LICENSING AUTHORITY]"),
   licensingStatement:
     "Daily Love Family Daycare operates in accordance with applicable Maryland childcare licensing requirements.",
   licensingPlaceholderNotice:
     "Confirm exact licensing agency name, license number, and approved wording before publishing.",
-  formProvider: "none",
-  formEndpoint: "",
+  formProvider: env.PUBLIC_FORM_ENDPOINT ? "formspree" : "none",
+  formEndpoint: requiredText(env.PUBLIC_FORM_ENDPOINT, ""),
+  analyticsId: requiredText(env.PUBLIC_GA_ID, ""),
   emergencyContactPolicy:
     "Emergency contact procedures are reviewed during enrollment and provided to families in writing.",
   seo: {
@@ -72,3 +81,5 @@ export const siteConfig: SiteConfig = {
     twitterCard: "summary_large_image"
   }
 };
+
+export const hasUsableUrl = (value: string): boolean => /^https?:\/\//i.test(value);
