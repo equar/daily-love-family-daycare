@@ -1,0 +1,95 @@
+---
+import type { GalleryImage } from "../data/gallery";
+
+interface Props {
+  images: GalleryImage[];
+  title?: string;
+  eyebrow?: string;
+  description?: string;
+}
+
+const {
+  images,
+  title = "Inside Our Daycare",
+  eyebrow = "Photo Gallery",
+  description = "A visual look at the warm, safe, and engaging spaces children experience each day."
+} = Astro.props;
+---
+
+<section class="section gallery-wrap reveal-on-scroll reveal-delay-1" aria-labelledby="gallery-title">
+  <div class="container">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id="gallery-title">{title}</h2>
+    <p class="gallery-description">{description}</p>
+
+    <div class="gallery-grid">
+      {images.map((image) => (
+        <figure class="gallery-card">
+          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" width="960" height="700" />
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-wrap {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255, 241, 215, 0.6), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(223, 241, 255, 0.7), transparent 36%),
+      #fff;
+  }
+
+  .eyebrow {
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-sky-700);
+    margin-bottom: var(--space-2);
+  }
+
+  .gallery-description {
+    max-width: 48rem;
+  }
+
+  .gallery-grid {
+    margin-top: var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .gallery-card {
+    margin: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-md);
+    border: 1px solid #edf2f6;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .gallery-card figcaption {
+    padding: var(--space-4);
+    font-weight: 700;
+    color: var(--color-ink-900);
+  }
+
+  @media (max-width: 64rem) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

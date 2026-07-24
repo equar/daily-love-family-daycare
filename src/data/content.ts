@@ -3,16 +3,25 @@ export const announcementText =
 
 export const heroContent = {
   title: "A Loving Place to Learn, Grow, and Feel at Home",
-  text: "At Daily Love Family Daycare, every child is welcomed like family. We provide a safe, nurturing, and educational home environment where children can learn, explore, build confidence, and develop meaningful relationships."
+  text: "Looking for a safe, loving, and nurturing environment for your little one? Daily Love Family Daycare offers a warm home setting where children learn, play, and thrive with care and respect."
 };
 
 export const welcomeContent = {
   heading: "Welcome",
-  intro: "Choosing childcare is one of the biggest decisions a parent can make.",
-  body: "At Daily Love Family Daycare, every child is welcomed like family. We provide a safe, loving, and educational environment where children can learn, explore, and build confidence every day.",
+  intro: "Now enrolling in Silver Spring, Maryland.",
+  body: "At Daily Love Family Daycare, children learn, grow, and thrive in a family-like environment where every child is treated with care and respect.",
   supporting:
-    "Our goal is to help children develop socially, emotionally, physically, and academically while giving parents peace of mind."
+    "Our goal is to support social, emotional, physical, and academic development while giving families peace of mind every day."
 };
+
+export const enrollmentHighlights: string[] = [
+  "Licensed family daycare",
+  "Warm, home-based childcare setting",
+  "Early learning activities",
+  "Arts, crafts, and creative play",
+  "Outdoor playtime",
+  "Small group attention and lots of love"
+];
 
 export const mission =
   "To provide every child with a safe, nurturing, and engaging environment where they feel loved, respected, and encouraged to reach their fullest potential.";
@@ -47,4 +56,4 @@ export const testimonialsPlaceholder =
   "Parent testimonials will be added after receiving written permission.";
 
 export const enrollmentNotice =
-  "Submitting an inquiry does not guarantee enrollment. Enrollment depends on availability, age-group capacity, licensing requirements, completed documentation, and acceptance of daycare policies.";
+  "Spaces are limited. Submitting an inquiry does not guarantee enrollment. Enrollment depends on availability, age-group capacity, licensing requirements, completed documentation, and acceptance of daycare policies.";

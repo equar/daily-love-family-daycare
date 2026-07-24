@@ -4,9 +4,11 @@ import Breadcrumb from "../components/Breadcrumb.astro";
 import HealthSafetyGrid from "../components/HealthSafetyGrid.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import CallToAction from "../components/CallToAction.astro";
+import DaycareGallery from "../components/DaycareGallery.astro";
 import { pageSeo } from "../data/seo";
 import { mealsNutritionText, mealsDisclaimer, parentCommunicationItems } from "../data/content";
 import { siteConfig } from "../data/siteConfig";
+import { safetyGalleryImages } from "../data/gallery";
 
 const seo = pageSeo.safety;
 ---
@@ -32,6 +34,13 @@ const seo = pageSeo.safety;
   </section>
 
   <HealthSafetyGrid />
+
+  <DaycareGallery
+    images={safetyGalleryImages}
+    eyebrow="Safety In Practice"
+    title="Safe Spaces Families Can Trust"
+    description="Our daily environment supports supervision, healthy routines, and child comfort from playtime through rest time."
+  />
 
   <section class="section">
     <div class="container grid grid-2">

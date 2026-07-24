@@ -11,11 +11,20 @@ import TestimonialSection from "../components/TestimonialSection.astro";
 import CallToAction from "../components/CallToAction.astro";
 import ContactPreview from "../components/ContactPreview.astro";
 import EnrollmentInquiryButton from "../components/EnrollmentInquiryButton.astro";
+import DaycareGallery from "../components/DaycareGallery.astro";
 import { pageSeo } from "../data/seo";
-import { welcomeContent, mission, vision, programDisclaimer, learningProgramSupport } from "../data/content";
+import {
+  welcomeContent,
+  mission,
+  vision,
+  programDisclaimer,
+  learningProgramSupport,
+  enrollmentHighlights
+} from "../data/content";
 import { parentChoiceFeatures, learningProgramItems } from "../data/features";
 import { coreValues } from "../data/values";
 import { programs } from "../data/programs";
+import { daycareGalleryImages } from "../data/gallery";
 
 const seo = pageSeo.home;
 ---
@@ -37,6 +46,11 @@ const seo = pageSeo.home;
         <article class="card">
           <p>{welcomeContent.body}</p>
           <p>{welcomeContent.supporting}</p>
+          <ul class="highlights">
+            {enrollmentHighlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
         </article>
         <article class="card surface-blue">
           <h3>Our Mission</h3>
@@ -58,6 +72,13 @@ const seo = pageSeo.home;
       </div>
     </div>
   </section>
+
+  <DaycareGallery
+    images={daycareGalleryImages}
+    eyebrow="Daily Love Spaces"
+    title="A Beautiful Look at Our Daycare Environment"
+    description="From early learning corners to creative play areas, every part of our space is designed to help children feel safe, joyful, and supported."
+  />
 
   <section class="section">
     <div class="container">
@@ -104,7 +125,7 @@ const seo = pageSeo.home;
 
   <CallToAction
     title="Enrollment Open for Inquiries"
-    text="Availability may be limited by age group. Contact us to discuss your child’s needs and schedule a tour."
+    text="Spaces are limited. Call or text (240) 643-6616 or email asrata33@gmail.com to discuss your child’s needs and schedule a tour."
     primaryLabel="Schedule a Tour"
     primaryHref="/contact"
     secondaryLabel="Request Enrollment Information"
@@ -118,5 +139,14 @@ const seo = pageSeo.home;
   .disclaimer {
     margin-top: var(--space-5);
     font-style: italic;
+  }
+
+  .highlights {
+    margin-top: var(--space-4);
+    padding-left: 1.2rem;
+  }
+
+  .highlights li + li {
+    margin-top: 0.35rem;
   }
 </style>

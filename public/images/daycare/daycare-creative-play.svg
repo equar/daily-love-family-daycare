@@ -1,0 +1,26 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Creative daycare play table illustration">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f6ff"/>
+      <stop offset="100%" stop-color="#fff8e7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg2)"/>
+  <rect x="0" y="660" width="1200" height="240" fill="#f6ecdd"/>
+
+  <rect x="120" y="150" width="960" height="420" rx="26" fill="#ffffff" stroke="#d9e6f0"/>
+  <rect x="170" y="220" width="860" height="280" rx="24" fill="#fff1d5"/>
+
+  <circle cx="300" cy="360" r="72" fill="#f7aa8a"/>
+  <circle cx="470" cy="360" r="72" fill="#ffd27d"/>
+  <circle cx="640" cy="360" r="72" fill="#95d2f6"/>
+  <circle cx="810" cy="360" r="72" fill="#9fd7a6"/>
+
+  <rect x="230" y="525" width="740" height="48" rx="18" fill="#f7bc8d"/>
+
+  <rect x="180" y="700" width="130" height="130" rx="18" fill="#ffd7a9"/>
+  <rect x="350" y="700" width="130" height="130" rx="18" fill="#cfe5ff"/>
+  <rect x="520" y="700" width="130" height="130" rx="18" fill="#fde0ec"/>
+  <rect x="690" y="700" width="130" height="130" rx="18" fill="#dff2dc"/>
+  <rect x="860" y="700" width="130" height="130" rx="18" fill="#ffeebf"/>
+</svg>

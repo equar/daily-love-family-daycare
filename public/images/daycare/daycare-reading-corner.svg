@@ -1,0 +1,28 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daycare reading corner illustration">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff0d5"/>
+      <stop offset="100%" stop-color="#e6f3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <rect x="0" y="650" width="1200" height="250" fill="#f3ead7"/>
+
+  <rect x="80" y="160" width="1040" height="440" rx="30" fill="#ffffff" stroke="#dce7f1"/>
+
+  <rect x="140" y="220" width="220" height="300" rx="18" fill="#ffe1b8"/>
+  <rect x="390" y="220" width="220" height="300" rx="18" fill="#d7ebff"/>
+  <rect x="640" y="220" width="220" height="300" rx="18" fill="#e4f2df"/>
+  <rect x="890" y="220" width="170" height="300" rx="18" fill="#fff4dd"/>
+
+  <rect x="168" y="252" width="164" height="26" rx="8" fill="#f39d7d"/>
+  <rect x="168" y="292" width="164" height="26" rx="8" fill="#ffd176"/>
+  <rect x="168" y="332" width="164" height="26" rx="8" fill="#7fc2ea"/>
+  <rect x="168" y="372" width="164" height="26" rx="8" fill="#9bcea0"/>
+
+  <rect x="130" y="684" width="940" height="120" rx="60" fill="#f7c6ae"/>
+  <circle cx="290" cy="744" r="50" fill="#fff1ca"/>
+  <circle cx="470" cy="744" r="50" fill="#d7ebff"/>
+  <circle cx="650" cy="744" r="50" fill="#fce1ee"/>
+  <circle cx="830" cy="744" r="50" fill="#e2f2de"/>
+</svg>

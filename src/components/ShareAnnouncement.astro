@@ -1,0 +1,113 @@
+---
+interface Props {
+  caption: string;
+  heading?: string;
+  helperText?: string;
+  showShareLinks?: boolean;
+}
+
+const {
+  caption,
+  heading = "Share this announcement",
+  helperText = "Use this exact message when sharing with friends or family.",
+  showShareLinks = true
+} = Astro.props;
+
+const encodedCaption = encodeURIComponent(caption);
+const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?quote=${encodedCaption}`;
+const xShareUrl = `https://twitter.com/intent/tweet?text=${encodedCaption}`;
+const whatsappShareUrl = `https://wa.me/?text=${encodedCaption}`;
+const emailShareUrl = `mailto:?subject=${encodeURIComponent("Now Enrolling at Daily Love Family Daycare")}&body=${encodedCaption}`;
+---
+
+<section class="share-announcement card" aria-labelledby="share-announcement-title">
+  <h2 id="share-announcement-title">{heading}</h2>
+  <p class="helper">{helperText}</p>
+
+  <label class="sr-only" for="announcement-caption">Announcement caption</label>
+  <textarea id="announcement-caption" class="caption" readonly>{caption}</textarea>
+
+  <div class="actions">
+    <button type="button" class="button copy-button" data-copy-caption="announcement-caption">
+      Copy Caption
+    </button>
+    <span class="copy-status" aria-live="polite"></span>
+  </div>
+
+  {showShareLinks && (
+    <div class="share-links" aria-label="Share options">
+      <a class="button secondary" href={facebookShareUrl} target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a class="button secondary" href={xShareUrl} target="_blank" rel="noopener noreferrer">X</a>
+      <a class="button secondary" href={whatsappShareUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="button secondary" href={emailShareUrl}>Email</a>
+    </div>
+  )}
+</section>
+
+<script is:inline>
+  const copyButton = document.querySelector("[data-copy-caption='announcement-caption']");
+  const status = document.querySelector(".copy-status");
+  const captionField = document.getElementById("announcement-caption");
+
+  if (copyButton && status && captionField) {
+    copyButton.addEventListener("click", async () => {
+      const text = captionField.value;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = "Caption copied.";
+      } catch {
+        captionField.focus();
+        captionField.select();
+        status.textContent = "Copy failed. Select the text and copy manually.";
+      }
+    });
+  }
+</script>
+
+<style>
+  .share-announcement {
+    margin-top: var(--space-6);
+  }
+
+  .helper {
+    margin-bottom: var(--space-4);
+  }
+
+  .caption {
+    width: 100%;
+    min-height: 20rem;
+    resize: vertical;
+    border: 1px solid #d8e3ec;
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    font: inherit;
+    color: var(--color-ink-900);
+    background: #fcfefe;
+    line-height: 1.5;
+  }
+
+  .actions {
+    margin-top: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .copy-button {
+    cursor: pointer;
+  }
+
+  .copy-status {
+    color: var(--color-ink-700);
+    font-weight: 600;
+  }
+
+  .share-links {
+    margin-top: var(--space-4);
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+</style>

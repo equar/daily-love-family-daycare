@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="section cta-wrap" aria-label="Call to action">
+<section class="section cta-wrap reveal-on-scroll" aria-label="Call to action">
   <div class="container">
     <div class="card cta">
       <h2>{title}</h2>
@@ -41,6 +41,17 @@ const {
 
   .cta {
     background: linear-gradient(135deg, #fef4dd, #e9f5ff 45%, #ffffff);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(90deg, #ffd989 0%, #ffc4a6 25%, #f5cadb 55%, #b9defb 100%);
   }
 
   .actions {

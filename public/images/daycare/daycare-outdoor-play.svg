@@ -1,0 +1,23 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daycare outdoor play area illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8eeff"/>
+      <stop offset="100%" stop-color="#f6fbff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="175" cy="160" r="72" fill="#ffe7a8"/>
+  <rect x="0" y="560" width="1200" height="340" fill="#c7e4b7"/>
+
+  <rect x="120" y="420" width="960" height="220" rx="36" fill="#fefefe" stroke="#d4e3d3"/>
+
+  <rect x="210" y="474" width="140" height="140" rx="16" fill="#f7ad86"/>
+  <rect x="390" y="474" width="140" height="140" rx="16" fill="#ffd17d"/>
+  <rect x="570" y="474" width="140" height="140" rx="16" fill="#8fcdf3"/>
+  <rect x="750" y="474" width="140" height="140" rx="16" fill="#9bcfa0"/>
+
+  <path d="M920 460h130v180H920z" fill="#86c9a1"/>
+  <path d="M950 460 985 390h30l35 70z" fill="#f4bc86"/>
+
+  <rect x="0" y="700" width="1200" height="200" fill="#afd79a"/>
+</svg>

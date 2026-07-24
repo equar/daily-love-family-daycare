@@ -1,0 +1,43 @@
+<svg width="1600" height="1120" viewBox="0 0 1600 1120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bright daycare interior scene illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff3d6"/>
+      <stop offset="52%" stop-color="#eaf5ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="rug" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f7b9a5"/>
+      <stop offset="100%" stop-color="#ffd98c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1120" fill="url(#bg)"/>
+  <rect x="0" y="760" width="1600" height="360" fill="#f6f0e4"/>
+
+  <rect x="92" y="126" width="462" height="290" rx="28" fill="#f9fbff" stroke="#d9e7f2"/>
+  <rect x="114" y="148" width="418" height="246" rx="20" fill="#d5ebff"/>
+  <circle cx="220" cy="270" r="66" fill="#ffde99"/>
+  <circle cx="306" cy="258" r="42" fill="#9bd3ff"/>
+  <rect x="384" y="224" width="120" height="94" rx="16" fill="#87c9a1"/>
+
+  <rect x="640" y="154" width="868" height="238" rx="24" fill="#ffffff" stroke="#deecf6"/>
+  <rect x="678" y="198" width="168" height="152" rx="16" fill="#ffe6be"/>
+  <rect x="870" y="198" width="168" height="152" rx="16" fill="#d9ecff"/>
+  <rect x="1062" y="198" width="168" height="152" rx="16" fill="#e3f2df"/>
+  <rect x="1254" y="198" width="216" height="152" rx="16" fill="#fff5df"/>
+
+  <rect x="164" y="520" width="520" height="172" rx="30" fill="#ffffff" stroke="#e0ebf3"/>
+  <rect x="192" y="564" width="130" height="38" rx="12" fill="#ffd3ab"/>
+  <rect x="344" y="564" width="130" height="38" rx="12" fill="#a9daf8"/>
+  <rect x="496" y="564" width="130" height="38" rx="12" fill="#b8e3ba"/>
+
+  <rect x="770" y="514" width="700" height="206" rx="34" fill="#ffffff" stroke="#dfeaf3"/>
+  <rect x="816" y="560" width="610" height="118" rx="24" fill="url(#rug)"/>
+  <circle cx="898" cy="620" r="34" fill="#fff2d5"/>
+  <circle cx="1004" cy="620" r="34" fill="#fce5ef"/>
+  <circle cx="1110" cy="620" r="34" fill="#dbecff"/>
+  <circle cx="1216" cy="620" r="34" fill="#e4f4df"/>
+  <circle cx="1322" cy="620" r="34" fill="#fff0bf"/>
+
+  <rect x="0" y="838" width="1600" height="282" fill="#f4e9d4"/>
+</svg>

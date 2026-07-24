@@ -77,19 +77,28 @@ const year = new Date().getFullYear();
 
 <style>
   .footer {
-    background: #133145;
+    background:
+      radial-gradient(circle at 10% -20%, rgba(255, 220, 147, 0.18), transparent 45%),
+      radial-gradient(circle at 90% -15%, rgba(173, 216, 255, 0.2), transparent 42%),
+      linear-gradient(180deg, #14334a 0%, #102c40 100%);
     color: #f4f8fb;
     padding-top: var(--space-12);
     padding-bottom: var(--space-8);
   }
 
   .footer a {
-    color: #d6ebff;
+    color: #e2f1ff;
+    text-underline-offset: 0.14em;
+  }
+
+  .footer a:hover {
+    color: #ffffff;
   }
 
   .name {
     font-family: var(--font-serif);
-    font-size: 1.25rem;
+    font-size: 1.35rem;
+    margin-bottom: var(--space-2);
     color: #ffffff;
   }
 
@@ -103,6 +112,22 @@ const year = new Date().getFullYear();
     font-size: 1.05rem;
     font-family: var(--font-sans);
     color: #ffffff;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-3);
+    display: inline-block;
+    position: relative;
+    padding-bottom: 0.35rem;
+  }
+
+  h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.1rem;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd98a, #b9defb);
+    border-radius: 999px;
   }
 
   ul {
@@ -113,8 +138,24 @@ const year = new Date().getFullYear();
     gap: var(--space-2);
   }
 
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  li::before {
+    content: "";
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 999px;
+    background: rgba(230, 243, 255, 0.72);
+    flex: 0 0 auto;
+  }
+
   .small {
     font-size: 0.9rem;
+    color: #c6dff2;
   }
 
   .legal {

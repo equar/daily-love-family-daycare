@@ -2,7 +2,7 @@
 import { heroContent } from "../data/content";
 ---
 
-<section class="hero section surface-cream" aria-labelledby="hero-title">
+<section class="hero section surface-cream reveal-on-scroll" aria-labelledby="hero-title">
   <div class="container hero-grid">
     <div>
       <p class="pill">Licensed Family Childcare in Montgomery County, Maryland</p>
@@ -16,14 +16,14 @@ import { heroContent } from "../data/content";
 
     <figure class="hero-image card">
       <img
-        src="/images/hero-placeholder.svg"
+        src="/images/daycare/daycare-hero-scene.svg"
         width="800"
         height="560"
         loading="eager"
         decoding="async"
-        alt="Warm and supervised daycare learning environment with diverse children engaged in reading, art, and guided play with caregivers."
+        alt="Warm and welcoming family daycare room with learning shelves, reading corner, and play activity stations."
       />
-      <figcaption>Replace with a licensed, permission-cleared daycare photo before publishing.</figcaption>
+      <figcaption>Family-style care, learning, and play in a safe and nurturing setting.</figcaption>
     </figure>
   </div>
 </section>
@@ -31,6 +31,18 @@ import { heroContent } from "../data/content";
 <style>
   .hero {
     padding-top: var(--space-10);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #ffd37c 0%, #f8bed1 42%, #bfe1ff 100%);
   }
 
   .hero-grid {
@@ -49,6 +61,7 @@ import { heroContent } from "../data/content";
   .hero-image {
     padding: var(--space-3);
     margin: 0;
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
   }
 
   figcaption {

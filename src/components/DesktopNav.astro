@@ -33,20 +33,52 @@ const { currentPath } = Astro.props;
     padding: 0;
     list-style: none;
     display: flex;
-    gap: var(--space-5);
+    gap: var(--space-2);
     align-items: center;
+    background: rgba(246, 250, 255, 0.78);
+    border: 1px solid #dbe8f3;
+    border-radius: var(--radius-pill);
+    padding: 0.28rem;
   }
 
   a {
     text-decoration: none;
     color: var(--color-ink-900);
     font-weight: 700;
-    padding: var(--space-2) var(--space-1);
-    border-bottom: 2px solid transparent;
+    font-size: 0.95rem;
+    padding: 0.52rem 0.78rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  a::before {
+    content: "";
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: background-color var(--transition), border-color var(--transition);
+  }
+
+  a:hover {
+    background: #edf5fd;
+    color: var(--color-sky-700);
   }
 
   a[aria-current="page"] {
-    border-bottom-color: var(--color-sky-700);
+    border-color: #bed9ef;
+    background: linear-gradient(180deg, #f2f9ff, #e5f2ff);
+    color: var(--color-sky-700);
+  }
+
+  a[aria-current="page"]::before {
+    background: #7db5de;
+    border-color: #6eaad6;
   }
 
   @media (min-width: 64rem) {
