@@ -56,7 +56,10 @@ export const siteConfig: SiteConfig = {
   businessHours: "7 A.M. - 5:30 P.M.",
   tourHours: "Tours available by appointment from 7 A.M. - 5:30 P.M.",
   canonicalUrl: requiredText(env.PUBLIC_SITE_URL, "https://example.com"),
-  mapsUrl: requiredText(env.PUBLIC_GOOGLE_MAPS, ""),
+  mapsUrl: requiredText(
+    env.PUBLIC_GOOGLE_MAPS,
+    "https://www.google.com/maps/search/?api=1&query=12922+Autumn+DR%2C+Silver+Spring%2C+MD+20904"
+  ),
   socialLinks: {
     facebook: requiredText(env.PUBLIC_FACEBOOK, ""),
     instagram: requiredText(env.PUBLIC_INSTAGRAM, ""),
