@@ -1,0 +1,104 @@
+---
+import { navigation } from "../data/navigation";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<div class="mobile-nav" data-mobile-nav>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    data-menu-button
+  >
+    <span class="sr-only">Open navigation menu</span>
+    <span aria-hidden="true">☰</span>
+  </button>
+
+  <nav id="mobile-menu" class="panel" aria-label="Mobile Primary" hidden data-menu-panel>
+    <ul>
+      {navigation.map((item) => {
+        const isActive = currentPath === item.href;
+        return (
+          <li>
+            <a href={item.href} aria-current={isActive ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const nav = document.querySelector("[data-mobile-nav]");
+  const button = nav?.querySelector("[data-menu-button]");
+  const panel = nav?.querySelector("[data-menu-panel]");
+
+  if (button && panel) {
+    button.addEventListener("click", () => {
+      const open = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!open));
+      panel.toggleAttribute("hidden", open);
+    });
+  }
+</script>
+
+<style>
+  .mobile-nav {
+    position: relative;
+  }
+
+  .menu-toggle {
+    border: 1px solid #d7e2ea;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + var(--space-2));
+    width: min(85vw, 18rem);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4);
+    z-index: 40;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    padding: var(--space-3);
+    text-decoration: none;
+    color: var(--color-ink-900);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+  }
+
+  a[aria-current="page"] {
+    background: var(--color-sky-100);
+  }
+
+  @media (min-width: 64rem) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+</style>

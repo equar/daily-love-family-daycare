@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<article class="program card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+</article>
+
+<style>
+  .program {
+    background: linear-gradient(180deg, #ffffff, #fffdf8);
+    height: 100%;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+</style>

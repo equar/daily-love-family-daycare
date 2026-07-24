@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ValueCard from "../components/ValueCard.astro";
+import CallToAction from "../components/CallToAction.astro";
+import { pageSeo } from "../data/seo";
+import { mission, vision, welcomeContent } from "../data/content";
+import { coreValues } from "../data/values";
+
+const seo = pageSeo.about;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.path}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  currentPath="/about"
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "About" }]} />
+      <SectionHeading title="About Daily Love Family Daycare" description={welcomeContent.body} />
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Our Mission</h3>
+          <p>{mission}</p>
+        </article>
+        <article class="card">
+          <h3>Our Vision</h3>
+          <p>{vision}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface-cream">
+    <div class="container">
+      <SectionHeading title="Our Core Values" />
+      <div class="grid grid-3">
+        {coreValues.map((value) => (
+          <ValueCard title={value.title} description={value.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Partner With a Childcare Team That Feels Like Family"
+    text="We welcome parents and guardians who value nurturing care, communication, and learning through play."
+    primaryLabel="Schedule a Tour"
+    primaryHref="/contact"
+  />
+</BaseLayout>

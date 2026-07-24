@@ -1,0 +1,113 @@
+---
+import { siteConfig } from "../data/siteConfig";
+import DesktopNav from "./DesktopNav.astro";
+import MobileNav from "./MobileNav.astro";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="announcement" role="status" aria-live="polite">
+    <div class="container">
+      <p>{siteConfig.enrollmentStatus}</p>
+    </div>
+  </div>
+
+  <div class="header-shell">
+    <div class="container inner">
+      <a class="brand" href="/" aria-label="Daily Love Family Daycare home">
+        <span class="name">{siteConfig.businessName}</span>
+        <span class="tagline">{siteConfig.tagline}</span>
+      </a>
+
+      <DesktopNav currentPath={currentPath} />
+
+      <div class="actions">
+        <a class="phone" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
+        <a class="button" href="/contact">Schedule a Tour</a>
+        <MobileNav currentPath={currentPath} />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .announcement {
+    background: var(--color-sun-200);
+    font-weight: 700;
+    font-size: 0.94rem;
+  }
+
+  .announcement p {
+    margin: 0;
+    padding: var(--space-2) 0;
+    text-align: center;
+    color: var(--color-ink-900);
+  }
+
+  .header-shell {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e5edf3;
+    backdrop-filter: blur(8px);
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4.75rem;
+  }
+
+  .brand {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .tagline {
+    font-size: 0.85rem;
+    color: var(--color-ink-700);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .phone {
+    display: none;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-ink-900);
+  }
+
+  .button {
+    display: none;
+  }
+
+  @media (min-width: 64rem) {
+    .phone,
+    .button {
+      display: inline-flex;
+    }
+  }
+</style>

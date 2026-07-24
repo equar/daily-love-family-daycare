@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import { pageSeo } from "../data/seo";
+import { siteConfig } from "../data/siteConfig";
+
+const seo = pageSeo.privacy;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.path}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  currentPath="/privacy-policy"
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
+      <h1>Privacy Policy</h1>
+      <p><strong>Effective date placeholder:</strong> [EFFECTIVE DATE]</p>
+      <p>
+        This privacy policy is a general website template for a childcare inquiry website and should be reviewed and
+        updated before publication.
+      </p>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Information Collected</h2>
+          <p>We may collect parent or guardian contact details and childcare inquiry information submitted through this website.</p>
+        </section>
+
+        <section class="card">
+          <h2>How Information Is Used</h2>
+          <p>Information is used to respond to inquiries, discuss care options, and communicate enrollment-related updates.</p>
+        </section>
+
+        <section class="card">
+          <h2>Contact-Form Submissions</h2>
+          <p>
+            Form submissions may be processed by a third-party form service selected by the daycare, such as Formspree
+            or Web3Forms.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Information About Children</h2>
+          <p>
+            Families should only share information necessary for childcare inquiry and enrollment steps. Additional
+            records are handled through official enrollment documentation.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Data Retention</h2>
+          <p>Inquiry data is retained only as long as reasonably needed for communication and recordkeeping.</p>
+        </section>
+
+        <section class="card">
+          <h2>Cookies and Analytics</h2>
+          <p>
+            This website may use basic cookies or analytics tools. Update this section if analytics or tracking tools are added.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Information Security</h2>
+          <p>Reasonable measures are used to protect inquiry information, but no online transmission is guaranteed to be fully secure.</p>
+        </section>
+
+        <section class="card">
+          <h2>Parent or Guardian Rights</h2>
+          <p>Parents or guardians may request updates or corrections to inquiry information by contacting the daycare directly.</p>
+        </section>
+
+        <section class="card">
+          <h2>Contact Information</h2>
+          <p>{siteConfig.businessName}</p>
+          <p>{siteConfig.phone}</p>
+          <p>{siteConfig.email}</p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

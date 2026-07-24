@@ -1,0 +1,23 @@
+---
+import { siteConfig } from "../data/siteConfig";
+---
+
+<section class="section surface-blue" aria-labelledby="contact-preview-heading">
+  <div class="container">
+    <h2 id="contact-preview-heading">Contact and Tour Information</h2>
+    <div class="grid grid-2">
+      <article class="card">
+        <h3>Contact</h3>
+        <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></p>
+        <p><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+        <p><strong>Address:</strong> {siteConfig.streetAddress}, {siteConfig.city}, {siteConfig.state} {siteConfig.zip}</p>
+      </article>
+      <article class="card">
+        <h3>Hours and Tours</h3>
+        <p><strong>Business hours:</strong> {siteConfig.businessHours}</p>
+        <p><strong>Tour availability:</strong> {siteConfig.tourHours}</p>
+        <a class="button" href="/contact">Schedule a Tour</a>
+      </article>
+    </div>
+  </div>
+</section>

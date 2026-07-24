@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<article class="value-card card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+</article>
+
+<style>
+  .value-card {
+    border-top: 5px solid var(--color-sun-200);
+    height: 100%;
+  }
+
+  h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+</style>

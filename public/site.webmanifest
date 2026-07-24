@@ -1,0 +1,16 @@
+{
+  "name": "Daily Love Family Daycare",
+  "short_name": "Daily Love Daycare",
+  "description": "Family childcare in Montgomery County, Maryland",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf1",
+  "theme_color": "#2f6f9f",
+  "icons": [
+    {
+      "src": "/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

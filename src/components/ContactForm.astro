@@ -1,0 +1,196 @@
+---
+const provider = import.meta.env.PUBLIC_FORM_PROVIDER || "none";
+const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT || "";
+const web3formsAccessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+
+const action = provider === "formspree" ? formspreeEndpoint : provider === "web3forms" ? "https://api.web3forms.com/submit" : "";
+---
+
+<form class="contact-form card" method="POST" action={action} novalidate data-inquiry-form>
+  {provider === "web3forms" && <input type="hidden" name="access_key" value={web3formsAccessKey} />}
+  <input type="hidden" name="subject" value="Daycare Enrollment Inquiry" />
+
+  <div class="hp" aria-hidden="true">
+    <label for="company">Leave this field empty</label>
+    <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <p class="form-note">Fields marked with * are required.</p>
+
+  <div class="grid grid-2">
+    <label>Parent or guardian name *<input name="parentName" required autocomplete="name" /></label>
+    <label>Email address *<input name="email" type="email" required autocomplete="email" /></label>
+    <label>Phone number *<input name="phone" type="tel" required autocomplete="tel" /></label>
+    <label>Child's first name *<input name="childName" required /></label>
+    <label>Child's age *<input name="childAge" required /></label>
+    <label>Child's date of birth *<input name="childDob" type="date" required /></label>
+    <label>Preferred start date *<input name="preferredStartDate" type="date" required /></label>
+    <fieldset>
+      <legend>Care needed *</legend>
+      <label><input type="radio" name="careNeeded" value="Full-time" required /> Full-time</label>
+      <label><input type="radio" name="careNeeded" value="Part-time" required /> Part-time</label>
+    </fieldset>
+    <label>Preferred days *<input name="preferredDays" required placeholder="Example: Monday-Friday" /></label>
+    <label>Preferred drop-off time *<input name="dropOffTime" type="time" required /></label>
+    <label>Preferred pick-up time *<input name="pickUpTime" type="time" required /></label>
+    <label>Allergies or special considerations<input name="allergies" /></label>
+  </div>
+
+  <label>Message *<textarea name="message" rows="5" required></textarea></label>
+
+  <label class="consent"
+    ><input type="checkbox" name="consent" required /> I understand that submitting this form is an inquiry and does not guarantee enrollment.</label
+  >
+
+  <p class="privacy">Privacy notice: Inquiry form data is used only to respond to your childcare inquiry and enrollment request.</p>
+
+  <button class="button" type="submit">Send Inquiry</button>
+
+  <p class="success" role="status" aria-live="polite" hidden data-success>
+    Thank you. Your inquiry has been submitted successfully.
+  </p>
+  <p class="error" role="alert" hidden data-error>
+    There was a problem submitting your inquiry. Please try again or contact us directly.
+  </p>
+</form>
+
+<script>
+  const form = document.querySelector("[data-inquiry-form]");
+  const success = form?.querySelector("[data-success]");
+  const error = form?.querySelector("[data-error]");
+
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", async (event) => {
+      const hp = form.querySelector("input[name='company']");
+      if (hp instanceof HTMLInputElement && hp.value.trim() !== "") {
+        event.preventDefault();
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        form.reportValidity();
+        return;
+      }
+
+      const actionAttr = form.getAttribute("action") || "";
+      if (!actionAttr) {
+        event.preventDefault();
+        if (error instanceof HTMLElement) {
+          error.hidden = false;
+          error.textContent = "Form endpoint is not configured yet. Please update environment variables.";
+        }
+        return;
+      }
+
+      event.preventDefault();
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch(actionAttr, {
+          method: "POST",
+          body: data,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        form.reset();
+        if (success instanceof HTMLElement) {
+          success.hidden = false;
+        }
+        if (error instanceof HTMLElement) {
+          error.hidden = true;
+        }
+      } catch {
+        if (error instanceof HTMLElement) {
+          error.hidden = false;
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  .hp {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  label,
+  fieldset {
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-ink-900);
+    font-weight: 700;
+    margin: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid #b7c6d1;
+    padding: 0.72rem;
+    font: inherit;
+    color: var(--color-ink-900);
+    background: var(--color-white);
+    min-height: 2.75rem;
+  }
+
+  textarea {
+    min-height: 8rem;
+  }
+
+  fieldset label {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  fieldset input[type="radio"] {
+    width: auto;
+    min-height: 1rem;
+  }
+
+  .consent {
+    display: flex;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  .consent input {
+    width: auto;
+    margin-top: 0.2rem;
+    min-height: 1rem;
+  }
+
+  .form-note,
+  .privacy {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .success {
+    color: #0f6b39;
+    font-weight: 700;
+  }
+
+  .error {
+    color: #9a1f1f;
+    font-weight: 700;
+  }
+</style>

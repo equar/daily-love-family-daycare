@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { pageSeo } from "../data/seo";
+import { siteConfig } from "../data/siteConfig";
+
+const seo = pageSeo.contact;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.path}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  currentPath="/contact"
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
+      <h1>Contact</h1>
+      <p>Questions about care, availability, or scheduling a tour? We would love to hear from you.</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h2>Daycare Contact Details</h2>
+          <p><strong>Address:</strong> {siteConfig.streetAddress}, {siteConfig.city}, {siteConfig.state} {siteConfig.zip}</p>
+          <p><strong>County:</strong> {siteConfig.county}, {siteConfig.state}</p>
+          <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></p>
+          <p><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+          <p><strong>Business hours:</strong> {siteConfig.businessHours}</p>
+          <p><strong>Tour availability:</strong> {siteConfig.tourHours}</p>
+          <p><strong>Google Maps:</strong> <a href={siteConfig.mapsUrl}>View map placeholder</a></p>
+          <p><strong>Emergency contact policy:</strong> {siteConfig.emergencyContactPolicy}</p>
+        </article>
+
+        <article class="card surface-cream">
+          <h2>Contact and Enrollment Inquiry Form</h2>
+          <ContactForm />
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

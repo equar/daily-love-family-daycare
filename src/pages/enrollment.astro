@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import CallToAction from "../components/CallToAction.astro";
+import EnrollmentInquiryButton from "../components/EnrollmentInquiryButton.astro";
+import { pageSeo } from "../data/seo";
+import { enrollmentNotice } from "../data/content";
+import { siteConfig } from "../data/siteConfig";
+
+const seo = pageSeo.enrollment;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.path}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  currentPath="/enrollment"
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Enrollment" }]} />
+      <h1>Enrollment</h1>
+      <p>{enrollmentNotice}</p>
+
+      <div class="card">
+        <h2>Enrollment Process</h2>
+        <ol>
+          <li>Submit an inquiry.</li>
+          <li>Speak with the caregiver.</li>
+          <li>Schedule a daycare tour.</li>
+          <li>Discuss the child’s needs and availability.</li>
+          <li>Review required enrollment documents.</li>
+          <li>Complete registration forms.</li>
+          <li>Confirm a start date.</li>
+        </ol>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h2>Current Availability</h2>
+          <p><strong>Infants:</strong> {siteConfig.infantAvailability}</p>
+          <p><strong>Toddlers:</strong> {siteConfig.toddlerAvailability}</p>
+          <p><strong>Preschool:</strong> {siteConfig.preschoolAvailability}</p>
+        </article>
+
+        <article class="card">
+          <h2>Inquiry Information to Prepare</h2>
+          <ul>
+            <li>Age of child</li>
+            <li>Preferred start date</li>
+            <li>Desired schedule</li>
+            <li>Full-time or part-time care</li>
+            <li>Allergies or special considerations</li>
+            <li>Tour request</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid grid-3 placeholders">
+        <article class="card">
+          <h3>Required Documentation Placeholder</h3>
+          <p>Add approved enrollment document checklist before publishing.</p>
+        </article>
+        <article class="card">
+          <h3>Enrollment Policy Placeholder</h3>
+          <p>Add final policy text, deadlines, and acceptance criteria.</p>
+        </article>
+        <article class="card">
+          <h3>Tuition Information Placeholder</h3>
+          <p>Do not publish tuition amounts until confirmed.</p>
+        </article>
+      </div>
+
+      <EnrollmentInquiryButton />
+    </div>
+  </section>
+
+  <CallToAction
+    title="Ready to Start the Enrollment Conversation?"
+    text="Submit an inquiry and we will follow up to discuss availability and next steps."
+    primaryLabel="Request Enrollment Information"
+    primaryHref="/contact"
+  />
+</BaseLayout>
+
+<style>
+  ol,
+  ul {
+    padding-left: 1.2rem;
+  }
+
+  .placeholders {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+</style>

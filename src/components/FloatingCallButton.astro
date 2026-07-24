@@ -1,0 +1,29 @@
+---
+import { siteConfig } from "../data/siteConfig";
+---
+
+<a class="floating-call" href={`tel:${siteConfig.phone}`} aria-label="Call Daily Love Family Daycare">
+  Call Us
+</a>
+
+<style>
+  .floating-call {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 45;
+    text-decoration: none;
+    background: var(--color-leaf-600);
+    color: var(--color-white);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-md);
+    padding: 0.85rem 1rem;
+    font-weight: 800;
+  }
+
+  @media (min-width: 64rem) {
+    .floating-call {
+      display: none;
+    }
+  }
+</style>

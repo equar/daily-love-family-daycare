@@ -1,0 +1,39 @@
+---
+import { safetyItems } from "../data/safetyItems";
+import { siteConfig } from "../data/siteConfig";
+---
+
+<section class="section surface-green" aria-labelledby="health-safety-heading">
+  <div class="container">
+    <h2 id="health-safety-heading">Health and Safety</h2>
+    <p>{siteConfig.licensingStatement}</p>
+    <p class="notice">{siteConfig.licensingPlaceholderNotice}</p>
+    <div class="grid grid-3">
+      {safetyItems.map((item) => (
+        <article class="safety-item card">
+          <p>{item}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .notice {
+    background: var(--color-cream-100);
+    border-left: 4px solid var(--color-sun-200);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+  }
+
+  .safety-item {
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-4);
+  }
+
+  .safety-item p {
+    margin: 0;
+    color: var(--color-ink-900);
+    font-weight: 700;
+  }
+</style>

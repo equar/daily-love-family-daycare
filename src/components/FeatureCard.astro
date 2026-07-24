@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  icon?: string;
+}
+
+const { title, icon = "check" } = Astro.props;
+---
+
+<article class="feature-card card">
+  <span class="icon" aria-hidden="true">{icon === "check" ? "✓" : icon}</span>
+  <h3>{title}</h3>
+</article>
+
+<style>
+  .feature-card {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-5);
+  }
+
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--color-leaf-100);
+    color: var(--color-leaf-600);
+    font-weight: 800;
+    flex: 0 0 auto;
+  }
+
+  h3 {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1.02rem;
+  }
+</style>

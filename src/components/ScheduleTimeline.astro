@@ -1,0 +1,55 @@
+---
+import { dailySchedule, scheduleDisclaimer } from "../data/schedule";
+---
+
+<section class="section surface-blue" aria-labelledby="schedule-heading">
+  <div class="container">
+    <h2 id="schedule-heading">Daily Schedule</h2>
+    <div class="timeline">
+      {dailySchedule.map((block) => (
+        <article class="timeline-block card">
+          <h3>{block.period}</h3>
+          <ul>
+            {block.activities.map((activity) => (
+              <li>{activity}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <p class="disclaimer">{scheduleDisclaimer}</p>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+
+  .disclaimer {
+    margin-top: var(--space-6);
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 56rem) {
+    .timeline {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

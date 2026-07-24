@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  title,
+  text,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref
+} = Astro.props;
+---
+
+<section class="section cta-wrap" aria-label="Call to action">
+  <div class="container">
+    <div class="card cta">
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <div class="actions">
+        <a class="button" href={primaryHref}>{primaryLabel}</a>
+        {secondaryLabel && secondaryHref && (
+          <a class="button secondary" href={secondaryHref}>{secondaryLabel}</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-wrap {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .cta {
+    background: linear-gradient(135deg, #fef4dd, #e9f5ff 45%, #ffffff);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

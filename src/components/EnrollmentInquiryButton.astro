@@ -1,0 +1,10 @@
+---
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const { href = "/enrollment", label = "Request Enrollment Information" } = Astro.props;
+---
+
+<a class="button" href={href}>{label}</a>

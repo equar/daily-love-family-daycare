@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import ValueCard from "../components/ValueCard.astro";
+import ProgramCard from "../components/ProgramCard.astro";
+import ScheduleTimeline from "../components/ScheduleTimeline.astro";
+import HealthSafetyGrid from "../components/HealthSafetyGrid.astro";
+import TestimonialSection from "../components/TestimonialSection.astro";
+import CallToAction from "../components/CallToAction.astro";
+import ContactPreview from "../components/ContactPreview.astro";
+import EnrollmentInquiryButton from "../components/EnrollmentInquiryButton.astro";
+import { pageSeo } from "../data/seo";
+import { welcomeContent, mission, vision, programDisclaimer, learningProgramSupport } from "../data/content";
+import { parentChoiceFeatures, learningProgramItems } from "../data/features";
+import { coreValues } from "../data/values";
+import { programs } from "../data/programs";
+
+const seo = pageSeo.home;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.path}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  currentPath="/"
+>
+  <Hero />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title={welcomeContent.heading} description={welcomeContent.intro} />
+      <div class="grid grid-2">
+        <article class="card">
+          <p>{welcomeContent.body}</p>
+          <p>{welcomeContent.supporting}</p>
+        </article>
+        <article class="card surface-blue">
+          <h3>Our Mission</h3>
+          <p>{mission}</p>
+          <h3>Our Vision</h3>
+          <p>{vision}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface-cream">
+    <div class="container">
+      <SectionHeading eyebrow="Why Parents Choose Us" title="Trusted Care in a Warm Family Setting" centered={true} />
+      <div class="grid grid-4">
+        {parentChoiceFeatures.map((feature) => (
+          <FeatureCard title={feature} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Ages We Serve" title="Programs" />
+      <div class="grid grid-3">
+        {programs.map((program) => (
+          <ProgramCard title={program.name} description={program.description} />
+        ))}
+      </div>
+      <p class="disclaimer">{programDisclaimer}</p>
+      <EnrollmentInquiryButton />
+    </div>
+  </section>
+
+  <section class="section surface-blue">
+    <div class="container">
+      <SectionHeading eyebrow="Core Values" title="Love, Safety, and Growth Every Day" />
+      <div class="grid grid-3">
+        {coreValues.map((value) => (
+          <ValueCard title={value.title} description={value.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Learning Program"
+        title="Play-Based Learning for Whole-Child Development"
+        description={learningProgramSupport}
+      />
+      <div class="grid grid-4">
+        {learningProgramItems.map((item) => (
+          <FeatureCard title={item} icon="•" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ScheduleTimeline />
+  <HealthSafetyGrid />
+  <TestimonialSection />
+
+  <CallToAction
+    title="Enrollment Open for Inquiries"
+    text="Availability may be limited by age group. Contact us to discuss your child’s needs and schedule a tour."
+    primaryLabel="Schedule a Tour"
+    primaryHref="/contact"
+    secondaryLabel="Request Enrollment Information"
+    secondaryHref="/enrollment"
+  />
+
+  <ContactPreview />
+</BaseLayout>
+
+<style>
+  .disclaimer {
+    margin-top: var(--space-5);
+    font-style: italic;
+  }
+</style>

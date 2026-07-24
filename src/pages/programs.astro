@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProgramCard from "../components/ProgramCard.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import CallToAction from "../components/CallToAction.astro";
+import { pageSeo } from "../data/seo";
+import { programs } from "../data/programs";
+import { programDisclaimer, learningProgramSupport } from "../data/content";
+import { learningProgramItems } from "../data/features";
+
+const seo = pageSeo.programs;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.path}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  currentPath="/programs"
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Programs" }]} />
+      <SectionHeading title="Ages We Serve" description="Infant, toddler, and preschool care options in a warm home setting." />
+      <div class="grid grid-3">
+        {programs.map((program) => (
+          <ProgramCard title={program.name} description={program.description} />
+        ))}
+      </div>
+      <p class="disclaimer">{programDisclaimer}</p>
+    </div>
+  </section>
+
+  <section class="section surface-blue">
+    <div class="container">
+      <SectionHeading title="Learning Program" description={learningProgramSupport} />
+      <div class="grid grid-4">
+        {learningProgramItems.map((item) => (
+          <FeatureCard title={item} icon="•" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Let’s Talk About Your Child’s Needs"
+    text="Contact us for program availability, schedule options, and enrollment information."
+    primaryLabel="Request Enrollment Information"
+    primaryHref="/enrollment"
+  />
+</BaseLayout>
+
+<style>
+  .disclaimer {
+    margin-top: var(--space-5);
+    font-style: italic;
+  }
+</style>

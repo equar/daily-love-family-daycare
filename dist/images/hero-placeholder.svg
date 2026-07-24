@@ -1,0 +1,17 @@
+<svg width="1200" height="840" viewBox="0 0 1200 840" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Daycare hero placeholder</title>
+  <desc id="desc">Illustrative placeholder representing a warm supervised daycare learning environment.</desc>
+  <rect width="1200" height="840" fill="#F7FBFF"/>
+  <rect x="60" y="70" width="1080" height="700" rx="32" fill="#FFFDF7"/>
+  <circle cx="210" cy="230" r="90" fill="#E7F2FB"/>
+  <circle cx="500" cy="190" r="70" fill="#F8D8DF"/>
+  <circle cx="960" cy="240" r="110" fill="#EAF4E8"/>
+  <rect x="140" y="360" width="920" height="290" rx="20" fill="#FFFFFF" stroke="#D5E2EA" stroke-width="4"/>
+  <rect x="190" y="420" width="300" height="24" rx="12" fill="#2F6F9F" fill-opacity="0.28"/>
+  <rect x="190" y="462" width="420" height="16" rx="8" fill="#3B4A58" fill-opacity="0.18"/>
+  <rect x="190" y="494" width="390" height="16" rx="8" fill="#3B4A58" fill-opacity="0.18"/>
+  <rect x="190" y="526" width="450" height="16" rx="8" fill="#3B4A58" fill-opacity="0.18"/>
+  <rect x="700" y="430" width="290" height="170" rx="16" fill="#E7F2FB"/>
+  <circle cx="770" cy="500" r="40" fill="#2F6F9F" fill-opacity="0.28"/>
+  <circle cx="920" cy="500" r="40" fill="#2F6F9F" fill-opacity="0.28"/>
+</svg>

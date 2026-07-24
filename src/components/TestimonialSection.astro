@@ -1,0 +1,24 @@
+---
+import { testimonialsPlaceholder } from "../data/content";
+---
+
+<section class="section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <h2 id="testimonials-heading">Testimonials</h2>
+    <div class="card placeholder" role="note" aria-label="Testimonials placeholder">
+      <p>{testimonialsPlaceholder}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .placeholder {
+    border: 2px dashed #c6d4df;
+    background: #fcfdff;
+  }
+
+  .placeholder p {
+    margin: 0;
+    font-weight: 700;
+  }
+</style>
